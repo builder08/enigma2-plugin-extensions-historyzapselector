@@ -23,7 +23,7 @@ try:
 except:
 	UseAutoCamSetup = False
 
-PLUGIN_VERSION = _(" ver. ") + "2.3"
+PLUGIN_VERSION = _(" ver. ") + "2.4"
 
 HistoryZapSelectorKeys = [
 	["none",_("standard <  >"),["KEY_RESERVED","KEY_RESERVED"]],
@@ -158,7 +158,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 			list.append(self.cfg_show_button)
 			list.append(self.cfg_pip_zap)
 			list.append(self.cfg_warning_message)
-			list.append(self.cfg_replace_keys)
+			#list.append(self.cfg_replace_keys)
 		self["config"].list = list
 		self["config"].l.setList(list)
 
@@ -393,10 +393,10 @@ def zapInfoBar__init__(self, session):
 def StartMainSession(reason, **kwargs):
 	global baseInfoBarChannelSelection__init__, PrevHistoryBack, PrevhistoryNext, oldInfoBar__init__
 	if reason == 0:
-		from Screens.InfoBar import InfoBar
-		if oldInfoBar__init__ is None:
-			oldInfoBar__init__ = InfoBar.__init__
-		InfoBar.__init__ = zapInfoBar__init__
+		#from Screens.InfoBar import InfoBar
+		#if oldInfoBar__init__ is None:
+		#	oldInfoBar__init__ = InfoBar.__init__
+		#InfoBar.__init__ = zapInfoBar__init__
 		if baseInfoBarChannelSelection__init__ is None:
 			baseInfoBarChannelSelection__init__ = InfoBarChannelSelection.__init__
 			InfoBarChannelSelection.__init__ = newInfoBarChannelSelection__init__
