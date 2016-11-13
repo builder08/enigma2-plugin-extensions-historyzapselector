@@ -191,6 +191,8 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 			self.ZAP.picon.value = False
 		if not self.ZAP.duration.value:
 			self.ZAP.duration_type.value = "0" 
+		if self.ZAP.replace_keys.value != "none":
+			self.ZAP.replace_keys.value = "none"
 		self.ZAP.save()
 		HISTORYSIZE = self.ZAP.history.value
 		self.close()
