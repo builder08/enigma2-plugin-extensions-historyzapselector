@@ -23,7 +23,7 @@ try:
 except:
 	UseAutoCamSetup = False
 
-PLUGIN_VERSION = _(" ver. ") + "2.5"
+PLUGIN_VERSION = _(" ver. ") + "2.6"
 
 HistoryZapSelectorKeys = [
 	["none",_("standard <  >"),["KEY_RESERVED","KEY_RESERVED"]],
