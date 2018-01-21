@@ -185,3 +185,9 @@ msgstr "стандарт <  >"
 
 msgid "zap to service"
 msgstr "переключить на сервис"
+
+msgid "Warning!\nVCS plugin hotkey need disabled!\n"
+msgstr "Внимание!\nГорячие кнопки плагина VCS необходимо отключить!\n"
+
+msgid "GUI needs restart to activate hotkey!"
+msgstr "Необходим рестарт GUI для активации горячих кнопок!"

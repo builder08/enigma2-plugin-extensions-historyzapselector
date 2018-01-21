@@ -278,3 +278,9 @@ msgstr ""
 #: HistoryZap.py:379 HistoryZap.py:383
 msgid "zap to service"
 msgstr ""
+
+msgid "Warning!\nVCS plugin hotkey need disabled!\n"
+msgstr ""
+
+msgid "GUI needs restart to activate hotkey!"
+msgstr ""

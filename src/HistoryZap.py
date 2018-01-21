@@ -30,8 +30,8 @@ if getDesktop(0).size().width() >= 1920:
 
 class PreviewZap(Screen):
 	if FULLHD:
-		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,50" size="90,25" title="Preview" zPosition="-1">
-				<eLabel text="Preview" position="0,0" size="90,25" foregroundColor="#00ff66" font="Regular;22" />
+		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,75" size="135,38" title="Preview" zPosition="-1">
+			<eLabel text="Preview" position="0,0" size="135,38" foregroundColor="#00ff66" font="Regular;33" />
 			</screen>"""
 	else:
 		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,50" size="90,25" title="Preview" zPosition="-1">
@@ -40,10 +40,10 @@ class PreviewZap(Screen):
 
 class FullEntryNumber(Screen):
 	if FULLHD:
-		skin = """<screen name="FullEntryNumber" position="center,center" size="720,420" title=" " zPosition="-1">
-			<widget name="text" font="Regular;17" position="5,10" size="225,400" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
-			<widget name="text1" font="Regular;17" position="240,10" size="225,400" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
-			<widget name="text2" font="Regular;17" position="475,10" size="225,400" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
+		skin = """<screen name="FullEntryNumber" position="center,center" size="1080,630" title=" " zPosition="-1">
+			<widget name="text" font="Regular;26" position="8,15" size="338,600" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
+			<widget name="text1" font="Regular;26" position="360,15" size="338,600" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
+			<widget name="text2" font="Regular;26" position="713,15" size="338,600" zPosition="2" halign="left" backgroundColor="#31000000" transparent="1" />
 		</screen>"""
 	else:
 		skin = """<screen name="FullEntryNumber" position="center,center" size="720,420" title=" " zPosition="-1">
@@ -326,248 +326,248 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		</screen>"""
 
 	HistoryZapDefaultSkinFullHD = """
-		<screen position="center,center" size="350,280" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,10" size="350,220" scrollbarMode="showNever">
+		<screen position="center,center" size="675,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="675,822" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (10, 2), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (40, 0), size = (290, 22), font = 1, flags = RT_HALIGN_LEFT, text = 2)
+							MultiContentEntryText(pos = (15, 3), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (578, 39), flags = RT_HALIGN_LEFT, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 22
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 48
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="0,240" size="350,17" zPosition="5" font="Regular;13" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/little_buttons.png" position="0,240" size="350,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="120,855" size="525,22" zPosition="5" font="Regular;19" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/little_buttons_fhd.png" position="72,885" size="555,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventSkinFullHD = """
-		<screen position="center,center" size="600,280" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,10" size="600,220" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,822" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 2), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 22), font = 1, flags = RT_HALIGN_LEFT, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 2), size = (300, 19), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000)
+							MultiContentEntryText(pos = (15, 3), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (705, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 22
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 48
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,240" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="0,240" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,855" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventPiconSkinFullHD = """
-		<screen position="center,center" size="620,300" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,256" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 5), size = (20, 20), font = 2,  color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 4), size = (260, 22), font = 1, flags = RT_HALIGN_LEFT, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 6), size = (270, 19), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 0), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (1043, 39), flags = RT_HALIGN_LEFT, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (128, 45), size = (1043, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 32
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,260" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,260" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventDurationSkinFullHD = """
-		<screen position="center,center" size="600,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="600,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 10), size = (300, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (30, 24), size = (260, 17), font = 2, flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999)
+							MultiContentEntryText(pos = (15, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (698, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (68, 45), size = (390, 39), flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33), ],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="0,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventDurationBarSkinFullHD = """
-		<screen position="center,center" size="600,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="600,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 10), size = (300, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryProgress(pos = (30, 24), size = (120, 12), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
-							MultiContentEntryText(pos = (160, 22), size = (50, 17), font = 3, flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff)
+							MultiContentEntryText(pos = (15, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (698, 39),flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryProgress(pos = (68, 57), size = (278, 18), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
+							MultiContentEntryText(pos = (368, 45), size = (68, 39), flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="0,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventDurationPiconSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 10), size = (270, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (80, 24), size = (260, 17), font = 2, flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 6), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (533, 3), size = (638, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (128, 51), size = (390, 39), flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapEventDurationPiconBarSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 10), size = (270, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryProgress(pos = (80, 24), size = (120, 12), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
-							MultiContentEntryText(pos = (210, 22), size = (50, 17), font = 3, flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 6), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (533, 3), size = (638, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryProgress(pos = (128, 57), size = (278, 18), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
+							MultiContentEntryText(pos = (435, 39), size = (68, 39), flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					 "fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					 "itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="120,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="15,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 5), size = (320, 20), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (30, 24), size = (590, 17), font = 2, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
+							MultiContentEntryText(pos = (15, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (698, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (68, 45), size = (1103, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionDurationSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 5), size = (320, 20), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (30, 24), size = (180, 17), font = 3, flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryText(pos = (230, 25), size = (390, 17), font = 3, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
+							MultiContentEntryText(pos = (15, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (698, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (68, 45), size = (390, 39), flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryText(pos = (473, 45), size = (698, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionDurationBarSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (0, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (30, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (300, 5), size = (320, 20), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryProgress(pos = (30, 24), size = (120, 12), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
-							MultiContentEntryText(pos = (160, 22), size = (50, 17), font = 3, flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
-						MultiContentEntryText(pos = (230, 25), size = (390, 17), font = 3, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
-					],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					"itemHeightt": 42
+							MultiContentEntryText(pos = (15, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (68, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (473, 3), size = (698, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryProgress(pos = (68, 57), size = (278, 18), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
+							MultiContentEntryText(pos = (368, 45), size = (68, 39), flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
+							MultiContentEntryText(pos = (473, 45), size = (698, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999)
+						],
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionPiconSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 5), size = (270, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (80, 24), size = (540, 17), font = 2, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 6), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (533, 3), size = (638, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (128, 45), size = (1043, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionDurationPiconSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 10), size = (20, 20), font = 2, color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 5), size = (270, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryText(pos = (80, 25), size = (180, 17), font = 3, flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryText(pos = (270, 25), size = (350, 17), font = 3, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 6), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color = 0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (533, 3), size = (638, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryText(pos = (128, 45), size = (390, 39), flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryText(pos = (533, 45), size = (638, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 	HistoryZapDescriptionDurationBarPiconSkinFullHD = """
-		<screen position="center,center" size="620,340" title="History zap...">
-			<widget source="menu" render="Listbox" position="0,0" size="620,295" scrollbarMode="showNever">
+		<screen position="center,center" size="1200,960" title="History zap...">
+			<widget source="menu" render="Listbox" position="0,8" size="1200,832" scrollbarMode="showNever">
 				<convert type="TemplatedMultiContent">
 					{"template": [
-							MultiContentEntryText(pos = (57, 10), size = (20, 20), font = 2, color =0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
-							MultiContentEntryText(pos = (80, 0), size = (260, 21), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
-							MultiContentEntryText(pos = (350, 5), size = (270, 22), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
-							MultiContentEntryProgress(pos = (80, 25), size = (120, 12), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
-							MultiContentEntryText(pos = (210, 23), size = (50, 17), font = 3, flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
-							MultiContentEntryText(pos = (270, 25), size = (350, 17), font = 3, flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
-							MultiContentEntryPixmapAlphaBlend(pos=(0, 6), size=(50, 30), png=6)
+							MultiContentEntryText(pos = (80, 21), size = (39, 39), color =0x00ffc000, color_sel = 0x00ffc000, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1),
+							MultiContentEntryText(pos = (128, 3), size = (390, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00ffffff, color_sel = 0x00ffffff),
+							MultiContentEntryText(pos = (533, 3), size = (638, 39), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3, color = 0x00ffc000, color_sel = 0x00ffc000),
+							MultiContentEntryProgress(pos = (128, 57), size = (278, 18), percent = -5, borderWidth = 1, foreColor = 0x0056c856, foreColorSelected = 0x0058bcff),
+							MultiContentEntryText(pos = (435, 45), size = (68, 39), flags = RT_HALIGN_LEFT, text = 7, color = 0x00999999, color_sel = 0x009999ff),
+							MultiContentEntryText(pos = (533, 45), size = (638, 39), flags = RT_HALIGN_LEFT, text = 4, color = 0x00999999, color_sel = 0x00999999),
+							MultiContentEntryPixmapAlphaBlend(pos=(1, 19), size=(75, 45), png=6)
 						],
-					"fonts": [gFont("Regular", 22), gFont("Regular", 20), gFont("Regular", 17), gFont("Regular", 16)],
-					"itemHeight": 42
+					 "fonts": [gFont("Regular", 33)],
+					 "itemHeight": 92
 					}
 				</convert>
 			</widget>
-			<widget name="text_buttons" position="80,300" size="500,18" zPosition="5" font="Regular;16" transparent="1" />
-			<widget name="menu_buttons" alphatest="on" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons.png" position="10,300" size="600,40" zPosition="4" transparent="1"/>
+			<widget name="text_buttons" position="285,855" size="750,23" zPosition="5" font="Regular;20" transparent="1" />
+			<widget name="menu_buttons" alphatest="blend" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/buttons_fhd.png" position="150,885" size="900,60" zPosition="4" transparent="1"/>
 		</screen>"""
 
 	def __init__(self, session, items=[], sel_item=0, mark_item=0, invert_items=False, redirect_buttons=False, wrap_around=True):
@@ -742,7 +742,12 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				else:
 					picon = self.findPicon(str(ServiceReference(x[1])))
 				if picon != "":
-					self.picon.setPara((50, 30, 1, 1, False, 1, '#000f0f0f'))
+					psw = 50
+					psh = 30
+					if FULLHD:
+						psw = 75
+						psh = 45
+					self.picon.setPara((psw, psh, 1, 1, False, 1, '#000f0f0f'))
 					self.picon.startDecode(picon, 0, 0, False)
 					png = self.picon.getData()
 			if self.invertItems:
@@ -940,7 +945,6 @@ class HistoryZapSelector(Screen, HelpableScreen):
 					elif not doPip and pip_config == "3":
 						self.setPipZap(type="3", dopipzap=doPip, ispip=isPip)
 					else:
-						print "Zap//////////////////////////////////"
 						self.close(self.getCurrent())
 				else:
 					self.close(self.getCurrent())

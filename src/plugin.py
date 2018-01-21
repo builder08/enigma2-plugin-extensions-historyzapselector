@@ -5,7 +5,7 @@ from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
 from Screens.ChannelSelection import ChannelSelection
 from Screens.InfoBarGenerics import InfoBarChannelSelection
-from enigma import eServiceCenter, eActionMap
+from enigma import eServiceCenter, eActionMap, getDesktop
 from HistoryZap import HistoryZapSelector
 from Components.Pixmap import Pixmap, MultiPixmap
 from Screens.Screen import Screen
@@ -23,7 +23,12 @@ try:
 except:
 	UseAutoCamSetup = False
 
-PLUGIN_VERSION = _(" ver. ") + "2.6"
+PLUGIN_VERSION = _(" ver. ") + "2.7"
+
+try:
+	screenWidth = getDesktop(0).size().width()
+except:
+	screenWidth = 720
 
 HistoryZapSelectorKeys = [
 	["none",_("standard <  >"),["KEY_RESERVED","KEY_RESERVED"]],
@@ -82,16 +87,28 @@ class HistoryZapInfoBar:
 
 class SetupZapSelectorScreen(Screen, ConfigListScreen):
 	global PLUGIN_VERSION
-	skin = """
+	if screenWidth >= 1920:
+		skin = """
+		<screen position="center,center" size="765,510" >
+			<widget name="config" position="8,8" size="750,435" font="Regular;30" itemHeight="36" />
+			<ePixmap pixmap="skin_default/buttons/green.png" position="270,450" zPosition="0" size="210,60" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/red.png" position="8,450" zPosition="0" size="210,60" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/blue.png" position="540,450" zPosition="0" size="210,60" alphatest="on" />
+			<widget name="clear" position="540,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="blue" />
+			<widget name="ok" position="270,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="green" />
+			<widget name="cancel" position="8,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="red" />
+		</screen>"""
+	else:
+		skin = """
 		<screen position="center,center" size="510,340" >
-		<widget name="config" position="5,5" size="500,290" />
-		<ePixmap pixmap="skin_default/buttons/green.png" position="180,300" zPosition="0" size="140,40" alphatest="on" />
-		<ePixmap pixmap="skin_default/buttons/red.png" position="5,300" zPosition="0" size="140,40" alphatest="on" />
-		<ePixmap pixmap="skin_default/buttons/blue.png" position="360,300" zPosition="0" size="140,40" alphatest="on" />
-		<widget name="clear" position="360,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="blue" />
-		<widget name="ok" position="180,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="green" />
-		<widget name="cancel" position="5,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="red" />
-	</screen>"""
+			<widget name="config" position="5,5" size="500,290" />
+			<ePixmap pixmap="skin_default/buttons/green.png" position="180,300" zPosition="0" size="140,40" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/red.png" position="5,300" zPosition="0" size="140,40" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/blue.png" position="360,300" zPosition="0" size="140,40" alphatest="on" />
+			<widget name="clear" position="360,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="blue" />
+			<widget name="ok" position="180,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="green" />
+			<widget name="cancel" position="5,300" size="140,40" valign="center" halign="center" zPosition="1" font="Regular;17" transparent="1" backgroundColor="red" />
+		</screen>"""
 
 	def __init__(self, session, args=None):
 		self.skin = SetupZapSelectorScreen.skin
@@ -158,7 +175,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 			list.append(self.cfg_show_button)
 			list.append(self.cfg_pip_zap)
 			list.append(self.cfg_warning_message)
-			#list.append(self.cfg_replace_keys)
+			list.append(self.cfg_replace_keys)
 		self["config"].list = list
 		self["config"].l.setList(list)
 
@@ -186,13 +203,24 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		global HISTORYSIZE
 		if not self.ZAP.start.value:
 			self.ZAP.event.value = "0"
+			self.ZAP.replace_keys.value = "none"
 		if self.ZAP.event.value == "0":
 			self.ZAP.duration.value = False
 			self.ZAP.picon.value = False
 		if not self.ZAP.duration.value:
 			self.ZAP.duration_type.value = "0" 
-		if self.ZAP.replace_keys.value != "none":
-			self.ZAP.replace_keys.value = "none"
+		if self.ZAP.start.value and self.ZAP.replace_keys.value != "none":
+			text = ""
+			try:
+				VCShotkey = config.plugins.VCS.enabled.value and config.plugins.VCS.hotkey.value != "none"
+			except:
+				VCShotkey = False
+			if VCShotkey:
+				text += _("Warning!\nVCS plugin hotkey need disabled!\n")
+			if oldInfoBar__init__ is None:
+				text += _("GUI needs restart to activate hotkey!")
+			if text:
+				self.session.open(MessageBox, text, MessageBox.TYPE_INFO, timeout = 5)
 		self.ZAP.save()
 		HISTORYSIZE = self.ZAP.history.value
 		self.close()
@@ -395,10 +423,11 @@ def zapInfoBar__init__(self, session):
 def StartMainSession(reason, **kwargs):
 	global baseInfoBarChannelSelection__init__, PrevHistoryBack, PrevhistoryNext, oldInfoBar__init__
 	if reason == 0:
-		#from Screens.InfoBar import InfoBar
-		#if oldInfoBar__init__ is None:
-		#	oldInfoBar__init__ = InfoBar.__init__
-		#InfoBar.__init__ = zapInfoBar__init__
+		if config.plugins.SetupZapSelector.start.value and config.plugins.SetupZapSelector.replace_keys.value != "none":
+			from Screens.InfoBar import InfoBar
+			if oldInfoBar__init__ is None:
+				oldInfoBar__init__ = InfoBar.__init__
+			InfoBar.__init__ = zapInfoBar__init__
 		if baseInfoBarChannelSelection__init__ is None:
 			baseInfoBarChannelSelection__init__ = InfoBarChannelSelection.__init__
 			InfoBarChannelSelection.__init__ = newInfoBarChannelSelection__init__
