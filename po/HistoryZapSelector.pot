@@ -284,3 +284,39 @@ msgstr ""
 
 msgid "GUI needs restart to activate hotkey!"
 msgstr ""
+
+msgid "Successed!"
+msgstr ""
+
+msgid "Failed!"
+msgstr ""
+
+msgid "Disable auto saving?"
+msgstr ""
+
+msgid "Enable auto saving?"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Options for history"
+msgstr ""
+
+msgid "config: "
+msgstr ""
+
+msgid "Save history list"
+msgstr ""
+
+msgid "Restore history list"
+msgstr ""
+
+msgid "Delete history list"
+msgstr ""
+
+msgid "Show history list"
+msgstr ""
+
+msgid "Auto save history before stopping E2"
+msgstr ""

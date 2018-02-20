@@ -5,25 +5,30 @@ from Plugins.Plugin import PluginDescriptor
 from Components.ActionMap import ActionMap
 from Screens.ChannelSelection import ChannelSelection
 from Screens.InfoBarGenerics import InfoBarChannelSelection
-from enigma import eServiceCenter, eActionMap, getDesktop
+from enigma import eServiceCenter, eActionMap, getDesktop, eServiceReference
 from HistoryZap import HistoryZapSelector
 from Components.Pixmap import Pixmap, MultiPixmap
 from Screens.Screen import Screen
+from Screens.ChoiceBox import ChoiceBox
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, ConfigSubsection, ConfigInteger, ConfigSelection, getConfigListEntry,ConfigYesNo, NoSave
+from Components.config import config, ConfigSubsection, ConfigInteger, ConfigSelection, getConfigListEntry,ConfigYesNo, NoSave, configfile
 from Screens.MessageBox import MessageBox
 from keyids import KEYIDS
 from Components.Button import Button
 from Tools.BoundFunction import boundFunction
 import Components.ParentalControl
 from time import localtime, time
+import os
 try:
 	from Plugins.SystemPlugins.AutoCamSetup.autocam import hew_setHistoryPath
 	UseAutoCamSetup = True
 except:
 	UseAutoCamSetup = False
 
-PLUGIN_VERSION = _(" ver. ") + "2.7"
+
+PLUGIN_VERSION = _(" ver. ") + "2.8"
+
+HistorySaveFile = "/etc/enigma2/historyzapselector.conf"
 
 try:
 	screenWidth = getDesktop(0).size().width()
@@ -50,6 +55,8 @@ config.plugins.SetupZapSelector.replace_keys = ConfigSelection([(x[0],x[1]) for 
 config.plugins.SetupZapSelector.show_button = ConfigYesNo(default = False)
 config.plugins.SetupZapSelector.warning_message = ConfigYesNo(default = True)
 config.plugins.SetupZapSelector.pip_zap = ConfigSelection(choices = {"0": _("disabled"), "1": _("show options list"), "2": _("only Pipzap"), "3": _("only standard PiP"), "4": _("enabled")}, default="0")
+
+config.misc.setupzapselector_save_history = ConfigYesNo(default = False)
 
 HISTORYSIZE = config.plugins.SetupZapSelector.history.value
 
@@ -117,7 +124,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 
 		self["ok"] = Button(_("Save"))
 		self["cancel"] = Button(_("Cancel"))
-		self["clear"] = Button(_("Clear History"))
+		self["clear"] = Button(_("Options"))
 		self["actions"] = ActionMap(["SetupActions", "ColorActions"], 
 		{
 			"ok": self.keyOk,
@@ -162,8 +169,9 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		self.cfg_replace_keys = getConfigListEntry(_("Behavior of keys for use"), self.ZAP.replace_keys)
 
 	def createSetup(self):
-		list = [ self.cfg_start ]
+		list = []
 		if self.ZAP.start.value:
+			list.append(self.cfg_start)
 			list.append(self.cfg_history)
 			list.append(self.cfg_event)
 			if self.ZAP.event.value != "0":
@@ -185,7 +193,11 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 			self.createSetup()
 
 	def keyOk(self):
-		pass
+		cur = self["config"].getCurrent() and self["config"].getCurrent()[1]
+		if not cur: 
+			return
+		else:
+			pass
 
 	def keyRed(self):
 		def setPrevValues(section, values):
@@ -234,11 +246,60 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		self.newConfig()
 
 	def keyBlue(self):
+		if InfoBarChannelSelection_instance:
+			text = _("Options for history") + "\n\n" + _("config: ") + HistorySaveFile
+			menu = [(_("Save history list"), "save")]
+			if os.path.exists(HistorySaveFile):
+				menu.append((_("Restore history list"), "restore"))
+				menu.append((_("Delete history list"), "delete"))
+				menu.append((_("Show history list"), "show"))
+			menu.append((_("Clear History"), "clear"))
+			menu.append((_("Auto save history before stopping E2"), "auto"))
+			def extraAction(choice):
+				if choice:
+					if choice[1] == "save":
+						if SaveHistoryInFile(InfoBarChannelSelection_instance):
+							txt = _("Successed!")
+						else:
+							txt = _("Failed!")
+						self.session.open(MessageBox, txt, MessageBox.TYPE_INFO, timeout=3)
+					elif choice[1] == "restore":
+						if RestoreHistoryInFile(InfoBarChannelSelection_instance):
+							txt = _("Successed!")
+						else:
+							txt = _("Failed!")
+						self.session.open(MessageBox, txt, MessageBox.TYPE_INFO, timeout=3)
+						self.close()
+					elif choice[1] == "delete":
+						os.system("rm -rf %s" % HistorySaveFile)
+					elif choice[1] == "show":
+						historylist = ShowHistoryInFile()
+						if historylist:
+							self.session.open(MessageBox, historylist, MessageBox.TYPE_INFO)
+						else:
+							self.session.open(MessageBox, _("Failed!"), MessageBox.TYPE_INFO, timeout=3)
+					elif choice[1] == "clear":
+						self.ClearHistory()
+					elif choice[1] == "auto":
+						if config.misc.setupzapselector_save_history.value:
+							txt = _("Disable auto saving?")
+						else:
+							txt = _("Enable auto saving?")
+						self.session.openWithCallback(self.saveAction, MessageBox, txt, type = MessageBox.TYPE_YESNO)
+			self.session.openWithCallback(extraAction, ChoiceBox, title=text, list=menu)
+
+	def saveAction(self, answer):
+		if answer:
+			config.misc.setupzapselector_save_history.value = not config.misc.setupzapselector_save_history.value
+			config.misc.setupzapselector_save_history.save()
+			configfile.save()
+
+	def ClearHistory(self):
 		if InfoBarChannelSelection_instance and historyClear(InfoBarChannelSelection_instance):
-			txt = _("History list clean is successed!")
+			txt = _("Successed!")
 		else:
-			txt = _("History list clean is failed!")
-		self.session.open(MessageBox, txt, MessageBox.TYPE_INFO, timeout = 3)
+			txt = _("Failed!")
+		self.session.open(MessageBox, txt, MessageBox.TYPE_INFO, timeout=3)
 		self.close()
 
 baseInfoBarChannelSelection__init__ = None
@@ -413,6 +474,96 @@ def addToHistory(self, ref):
 			hlen -= 1
 		self.history_pos = hlen-1
 
+def SaveHistoryInFile(self):
+	if self and self.servicelist:
+		file = open(HistorySaveFile, 'w')
+		for line in self.servicelist.history:
+			path = ';'.join([i.toString() for i in line])
+			file.write(path + "\n")
+		file.close()
+		return True
+	return False
+
+def RestoreHistoryInFile(self):
+	if self and self.servicelist:
+		try:
+			cfg = open(HistorySaveFile, 'r')
+		except:
+			return False
+		for i in range(0, len(self.servicelist.history)-1):
+			del self.servicelist.history[0]
+		self.servicelist.history_pos = 0
+		old_history = self.servicelist.history[0]
+		try:
+			currentRef = self.session.nav.getCurrentlyPlayingServiceOrGroup()
+			if not currentRef:
+				currentRef = self.history[0][-1]
+			refstr = currentRef.toString()
+		except:
+			refstr = ""
+		cnt = 0
+		self.servicelist.history = []
+		while True:
+			line = cfg.readline()
+			line = line.replace('\n', '')
+			if not line: break
+			if line[0] in '#': continue
+			if refstr and refstr in line: continue
+			try:
+				tmp = [eServiceReference(x) for x in line.split(';') if x != '']
+			except:
+				tmp = []
+			if tmp and tmp != old_history and not tmp in self.servicelist.history:
+				self.servicelist.history.append(tmp)
+				cnt += 1
+		cfg.close()
+		self.servicelist.history.append(old_history)
+		self.servicelist.history_pos = cnt
+		if cnt:
+			return True
+	return False
+
+def ShowHistoryInFile():
+	serviceNameList = ""
+	try:
+		cfg = open(HistorySaveFile, 'r')
+	except:
+		return serviceNameList
+	cnt = 0
+	history = []
+	while True:
+		line = cfg.readline()
+		line = line.replace('\n', '')
+		if not line: break
+		if line[0] in '#': continue
+		try:
+			tmp = [eServiceReference(x) for x in line.split(';') if x != '']
+		except:
+			tmp = []
+		if tmp and not tmp in history:
+			history.append(tmp)
+	cfg.close()
+	if history:
+		nlen = len(history)
+		cnt = 0
+		serviceHandler = eServiceCenter.getInstance()
+		for x in history:
+			cnt += 1
+			serviceName = ""
+			try:
+				info = serviceHandler.info(x[-1])
+				if info:
+					serviceName = info.getName(x[-1])
+					if serviceName is None:
+						serviceName = "n/a " + str(cnt)
+			except:
+				serviceName = "error " + str(cnt)
+			if serviceName:
+				serviceNameList += serviceName
+				if nlen > cnt:
+					serviceNameList += ';'
+	return serviceNameList
+
 def main(session, **kwargs):
 	session.open(SetupZapSelectorScreen)
 
@@ -439,6 +590,8 @@ def StartMainSession(reason, **kwargs):
 			InfoBarChannelSelection.historyMenuClosed = historyMenuClosed
 			InfoBarChannelSelection.historyCheckTimeshiftCallback = historyCheckTimeshiftCallback
 			ChannelSelection.addToHistory = addToHistory
+	elif reason == 1 and config.plugins.SetupZapSelector.start.value and config.misc.setupzapselector_save_history.value:
+		SaveHistoryInFile(InfoBarChannelSelection_instance)
 
 def Plugins(**kwargs):
 	return [PluginDescriptor(name=_("HistoryZapSelector"), description=_("History Zap Selector"), where = [PluginDescriptor.WHERE_SESSIONSTART,PluginDescriptor.WHERE_AUTOSTART], fnc = StartMainSession),

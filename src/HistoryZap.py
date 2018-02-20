@@ -974,7 +974,6 @@ class HistoryZapSelector(Screen, HelpableScreen):
 						self.session.pipshown = False
 					self.session.pip = self.session.instantiateDialog(PictureInPicture)
 					self.session.pip.show()
-					#todo!!!!!!!!if not self.session.pip.playService(nref):
 					if self.session.pip.playService(nref):
 						self.session.pipshown = True
 						self.session.pip.servicePath = self.InfoBarInstance.servicelist.getCurrentServicePath()

@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-28 19:54+0100\n"
-"PO-Revision-Date: 2015-09-17 23:52+0300\n"
+"PO-Revision-Date: 2018-02-20 20:04+0200\n"
 "Language-Team: LANGUAGE <Dima-73@inbox.lv>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language: ru\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 2.0.4\n"
 
 msgid " ver. "
 msgstr " вер. "
@@ -186,8 +186,48 @@ msgstr "стандарт <  >"
 msgid "zap to service"
 msgstr "переключить на сервис"
 
-msgid "Warning!\nVCS plugin hotkey need disabled!\n"
-msgstr "Внимание!\nГорячие кнопки плагина VCS необходимо отключить!\n"
+msgid ""
+"Warning!\n"
+"VCS plugin hotkey need disabled!\n"
+msgstr ""
+"Внимание!\n"
+"Горячие кнопки плагина VCS необходимо отключить!\n"
 
 msgid "GUI needs restart to activate hotkey!"
 msgstr "Необходим рестарт GUI для активации горячих кнопок!"
+
+msgid "Successed!"
+msgstr "Успешно!"
+
+msgid "Failed!"
+msgstr "Не удалось!"
+
+msgid "Disable auto saving?"
+msgstr "Отключить автосохранение?"
+
+msgid "Enable auto saving?"
+msgstr "Включить автосохранение?"
+
+msgid "Options"
+msgstr "Опции"
+
+msgid "Options for history"
+msgstr "Опции списка истории"
+
+msgid "config: "
+msgstr "конфиг: "
+
+msgid "Save history list"
+msgstr "Сохранить список истории"
+
+msgid "Restore history list"
+msgstr "Восстановить список истории"
+
+msgid "Delete history list"
+msgstr "Удалить список истории"
+
+msgid "Show history list"
+msgstr "Показать список истории"
+
+msgid "Auto save history before stopping E2"
+msgstr "Автосохранение истории перед остановкой E2"
