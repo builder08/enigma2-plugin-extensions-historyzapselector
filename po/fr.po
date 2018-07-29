@@ -1,0 +1,256 @@
+# French translations for enigma package.
+# Copyright (C) 2018 THE enigma'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the enigma package.
+# Automatically generated, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: enigma 2-plugin-extensions-historyzapselector\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-29 01:33+0200\n"
+"PO-Revision-Date: 2018-07-29 10:06+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.1.1\n"
+
+msgid " ver. "
+msgstr " ver. "
+
+#, python-format
+msgid "%02d.%02d - %02d.%02d (%s%d min)"
+msgstr "%02d.%02d - %02d.%02d (%s%d min)"
+
+#, python-format
+msgid "%s"
+msgstr "%s"
+
+#, python-format
+msgid "%s  number: %s"
+msgstr "%s  numéro: %s"
+
+msgid "Auto save history before stopping E2"
+msgstr "Sauvegarde automatique de l'historique avant d'arrêter E2"
+
+msgid "Behavior of keys for use"
+msgstr "Comportement des touches à utiliser"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Clear History"
+msgstr "Effacer l'historique"
+
+msgid "Could not open Picture in Picture"
+msgstr "N'a pu ouvrir l'incrustation d'image"
+
+msgid "Del entry  Clear history        Preview"
+msgstr "Sup entrée  Effacer l'historique            Aperçu"
+
+msgid "Del entry  Clear history  List  Preview"
+msgstr "Sup entrée  Effacer l'historique  Liste  Aperçu"
+
+msgid "Delete history list"
+msgstr "Supprimer la liste de l'historique"
+
+msgid "Delete selected  Clear history                 Preview"
+msgstr "Effacer sélect.  Effacer l’histo.                                Aperçu"
+
+msgid "Delete selected  Clear history  All list       Preview"
+msgstr "Effacer sélect.  Effacer l’histo.   Toute la liste        Aperçu"
+
+msgid "Disable auto saving?"
+msgstr "Désactiver la sauvegarde automatique ?"
+
+msgid "Duration type"
+msgstr "Type de durée"
+
+msgid "Enable Zap History"
+msgstr "Activer l'historique du zap"
+
+msgid "Enable auto saving?"
+msgstr "Activer l'enregistrement automatique ?"
+
+msgid "Failed!"
+msgstr "Échec!"
+
+msgid "GUI needs restart to activate hotkey!"
+msgstr "L’IGU doit être redémarrée pour activer la touche de raccourci!"
+
+msgid "History Zap Selector"
+msgstr "Sélection dans l’Historique de Zap"
+
+#, python-format
+msgid "History zap: count %d"
+msgstr "Historique de Zap: nombre %d"
+
+msgid "HistoryZapSelector"
+msgstr "HistoriqueZapSelecteur"
+
+#, python-format
+msgid "Invalid number: %s"
+msgstr "Nombre non valide: %s"
+
+msgid "Main screen"
+msgstr "Écran principal"
+
+msgid "Maximum zap history entries"
+msgstr "Nombre maximum d'entrées de l'historique zap"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Options for history"
+msgstr "Options pour l'historique"
+
+msgid "Pipzap"
+msgstr "Pipzap"
+
+msgid "Preview zap to service ?"
+msgstr "Prévisualisation du zap du service?"
+
+msgid "Really clear history list ?"
+msgstr "Vraiment effacer la liste de l’historique?"
+
+msgid "Really delete current entry ?"
+msgstr "Effacer vraiment l'entrée en cours?"
+
+msgid "Restore history list"
+msgstr "Restaurer la liste de l'historique"
+
+msgid "Save"
+msgstr "Sauver"
+
+msgid "Save history list"
+msgstr "Sauvegarder la liste de l'historique"
+
+msgid "Settings zap history"
+msgstr "Paramètres historique de zap"
+
+msgid "Setup Zap History:"
+msgstr "Configurer l'historique de Zap:"
+
+msgid "Show duration events"
+msgstr "Afficher la durée des événements"
+
+msgid "Show history list"
+msgstr "Afficher la liste de l'historique"
+
+msgid "Show panel buttons on display"
+msgstr "Afficher les boutons du panneau sur l'écran"
+
+msgid "Show warning message before action"
+msgstr "Afficher le message d'avertissement avant l'action"
+
+msgid "Standard PiP"
+msgstr "PiP standard"
+
+msgid "Style services list"
+msgstr "Style de la liste des services"
+
+msgid "Successed!"
+msgstr "Avec succès!"
+
+msgid "Use number zap"
+msgstr "Utiliser le numéro de zap"
+
+msgid "Use picons"
+msgstr "Utiliser les picons"
+
+msgid "Use the number keys for zap to service"
+msgstr "Utilisez les touches numériques pour zap vers le service"
+
+msgid ""
+"Warning!\n"
+"VCS plugin hotkey need disabled!\n"
+msgstr ""
+"Attention !\n"
+"VCS plugin hotkey doit être désactivé!\n"
+
+msgid "Zap as:"
+msgstr "Zapper comme:"
+
+msgid "Zap focus PiP (if only enabled)"
+msgstr "Zap focus PiP (seulement si activé)"
+
+msgid "clear history list"
+msgstr "Effacer la liste de l'historique"
+
+msgid "config: "
+msgstr "config: "
+
+msgid "default (only service name)"
+msgstr "par défaut (nom du service uniquement)"
+
+msgid "delete selected entry"
+msgstr "supprimer l'entrée sélectionnée"
+
+msgid "disabled"
+msgstr "désactivé"
+
+msgid "enabled"
+msgstr "activé"
+
+msgid "event name"
+msgstr "Nom de l'évènement"
+
+msgid "event name and description"
+msgstr "nom et description de l'événement"
+
+msgid "exit"
+msgstr "sortir"
+
+msgid "next entry"
+msgstr "entrée suivante"
+
+msgid "only CH+/-,B+/-,P+/-"
+msgstr "seulement CH+/-,B+/-,P+/-"
+
+msgid "only LEFT/RIGHT"
+msgstr "seulement GAUCHE/DROITE"
+
+msgid "only Pipzap"
+msgstr "seulement Pipzap"
+
+msgid "only TEXT/HELP"
+msgstr "seulement TEXT/HELP"
+
+msgid "only standard PiP"
+msgstr "seulement PiP standard"
+
+msgid "open Event View"
+msgstr "ouvrir la vue de l'événement"
+
+msgid "open list options"
+msgstr "ouvrir la liste des options"
+
+msgid "open single EPG"
+msgstr "ouvrir l’EPG simple"
+
+msgid "preview for selected entry"
+msgstr "aperçu pour l'entrée sélectionnée"
+
+msgid "previous entry"
+msgstr "entrée précédente"
+
+msgid "progress bar"
+msgstr "barre de progression"
+
+msgid "remaining minutes"
+msgstr "minutes restantes"
+
+msgid "show all list"
+msgstr "afficher toute la liste"
+
+msgid "show options list"
+msgstr "afficher la liste des options"
+
+msgid "standard <  >"
+msgstr "standard <  >"
+
+msgid "zap to service"
+msgstr "zapper vers le service"
