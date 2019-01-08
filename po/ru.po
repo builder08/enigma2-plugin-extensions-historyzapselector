@@ -249,3 +249,6 @@ msgstr "стандарт <  >"
 
 msgid "zap to service"
 msgstr "переключить на сервис"
+
+msgid "Show parental control services"
+msgstr "Показывать сервисы родительского контроля"

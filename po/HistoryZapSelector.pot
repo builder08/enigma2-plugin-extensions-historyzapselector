@@ -251,3 +251,6 @@ msgstr ""
 
 msgid "zap to service"
 msgstr ""
+
+msgid "Show parental control services"
+msgstr ""

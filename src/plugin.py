@@ -9,6 +9,7 @@ from enigma import eServiceCenter, eActionMap, getDesktop, eServiceReference
 from HistoryZap import HistoryZapSelector
 from Components.Pixmap import Pixmap, MultiPixmap
 from Screens.Screen import Screen
+from Screens.ParentalControlSetup import ProtectedScreen
 from Screens.ChoiceBox import ChoiceBox
 from Components.ConfigList import ConfigListScreen
 from Components.config import config, ConfigSubsection, ConfigInteger, ConfigSelection, getConfigListEntry,ConfigYesNo, NoSave, configfile
@@ -26,7 +27,7 @@ except:
 	UseAutoCamSetup = False
 
 
-PLUGIN_VERSION = _(" ver. ") + "2.8"
+PLUGIN_VERSION = _(" ver. ") + "2.9"
 
 HistorySaveFile = "/etc/enigma2/historyzapselector.conf"
 
@@ -55,6 +56,7 @@ config.plugins.SetupZapSelector.replace_keys = ConfigSelection([(x[0],x[1]) for 
 config.plugins.SetupZapSelector.show_button = ConfigYesNo(default = False)
 config.plugins.SetupZapSelector.warning_message = ConfigYesNo(default = True)
 config.plugins.SetupZapSelector.pip_zap = ConfigSelection(choices = {"0": _("disabled"), "1": _("show options list"), "2": _("only Pipzap"), "3": _("only standard PiP"), "4": _("enabled")}, default="0")
+config.plugins.SetupZapSelector.visible_parental_control = ConfigYesNo(default = True)
 
 config.misc.setupzapselector_save_history = ConfigYesNo(default = False)
 
@@ -92,12 +94,12 @@ class HistoryZapInfoBar:
 				return 1
 		return 0
 
-class SetupZapSelectorScreen(Screen, ConfigListScreen):
+class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 	global PLUGIN_VERSION
 	if screenWidth >= 1920:
 		skin = """
-		<screen position="center,center" size="765,510" >
-			<widget name="config" position="8,8" size="750,435" font="Regular;30" itemHeight="36" />
+		<screen position="center,center" size="765,550" >
+			<widget name="config" position="8,8" size="750,475" font="Regular;30" itemHeight="36" />
 			<ePixmap pixmap="skin_default/buttons/green.png" position="270,450" zPosition="0" size="210,60" alphatest="on" />
 			<ePixmap pixmap="skin_default/buttons/red.png" position="8,450" zPosition="0" size="210,60" alphatest="on" />
 			<ePixmap pixmap="skin_default/buttons/blue.png" position="540,450" zPosition="0" size="210,60" alphatest="on" />
@@ -107,8 +109,8 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		</screen>"""
 	else:
 		skin = """
-		<screen position="center,center" size="510,340" >
-			<widget name="config" position="5,5" size="500,290" />
+		<screen position="center,center" size="510,360" >
+			<widget name="config" position="5,5" size="500,310" />
 			<ePixmap pixmap="skin_default/buttons/green.png" position="180,300" zPosition="0" size="140,40" alphatest="on" />
 			<ePixmap pixmap="skin_default/buttons/red.png" position="5,300" zPosition="0" size="140,40" alphatest="on" />
 			<ePixmap pixmap="skin_default/buttons/blue.png" position="360,300" zPosition="0" size="140,40" alphatest="on" />
@@ -121,7 +123,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		self.skin = SetupZapSelectorScreen.skin
 		self.setup_title = _("Setup Zap History:") + PLUGIN_VERSION
 		Screen.__init__(self, session)
-
+		ProtectedScreen.__init__(self)
 		self["ok"] = Button(_("Save"))
 		self["cancel"] = Button(_("Cancel"))
 		self["clear"] = Button(_("Options"))
@@ -137,6 +139,12 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		self.createSetup()
 		self.onClose.append(self.__closed)
 		self.onLayoutFinish.append(self.__layoutFinished)
+
+	def isProtected(self):
+		return not config.plugins.SetupZapSelector.visible_parental_control.value and config.ParentalControl.servicepin[0].value and config.ParentalControl.servicepinactive.value
+
+	def closeProtectedScreen(self, result=None):
+		self.close()
 
 	def __closed(self):
 		pass
@@ -167,6 +175,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 		self.cfg_warning_message = getConfigListEntry(_("Show warning message before action"), self.ZAP.warning_message)
 		self.cfg_show_button = getConfigListEntry(_("Show panel buttons on display"), self.ZAP.show_button)
 		self.cfg_replace_keys = getConfigListEntry(_("Behavior of keys for use"), self.ZAP.replace_keys)
+		self.cfg_visible_parental_control = getConfigListEntry(_("Show parental control services"), self.ZAP.visible_parental_control)
 
 	def createSetup(self):
 		list = []
@@ -184,6 +193,8 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen):
 			list.append(self.cfg_pip_zap)
 			list.append(self.cfg_warning_message)
 			list.append(self.cfg_replace_keys)
+			if config.ParentalControl.servicepin[0].value and config.ParentalControl.servicepinactive.value:
+				list.append(self.cfg_visible_parental_control)
 		self["config"].list = list
 		self["config"].l.setList(list)
 
@@ -369,6 +380,9 @@ def historyZap(self, direction):
 	serviceHandler = eServiceCenter.getInstance()
 	historylist = [ ]
 	for x in self.servicelist.history:
+		if not config.plugins.SetupZapSelector.visible_parental_control.value and config.ParentalControl.servicepin[0].value and config.ParentalControl.servicepinactive.value:
+			if Components.ParentalControl.parentalControl.getProtectionLevel(x[-1].toCompareString()) != -1:
+				continue
 		info = serviceHandler.info(x[-1])
 		if info:
 			serviceName = info.getName(x[-1])
