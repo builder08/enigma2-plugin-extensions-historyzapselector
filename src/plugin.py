@@ -179,8 +179,8 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 
 	def createSetup(self):
 		list = []
+		list.append(self.cfg_start)
 		if self.ZAP.start.value:
-			list.append(self.cfg_start)
 			list.append(self.cfg_history)
 			list.append(self.cfg_event)
 			if self.ZAP.event.value != "0":
