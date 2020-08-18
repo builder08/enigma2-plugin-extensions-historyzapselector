@@ -100,9 +100,9 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 		skin = """
 		<screen position="center,center" size="765,550" >
 			<widget name="config" position="8,8" size="750,475" font="Regular;30" itemHeight="36" />
-			<ePixmap pixmap="skin_default/buttons/green.png" position="270,450" zPosition="0" size="210,60" alphatest="on" />
-			<ePixmap pixmap="skin_default/buttons/red.png" position="8,450" zPosition="0" size="210,60" alphatest="on" />
-			<ePixmap pixmap="skin_default/buttons/blue.png" position="540,450" zPosition="0" size="210,60" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/green.png" position="300,460" zPosition="0" size="210,60" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/red.png" position="38,460" zPosition="0" size="210,60" alphatest="on" />
+			<ePixmap pixmap="skin_default/buttons/blue.png" position="570,460" zPosition="0" size="210,60" alphatest="on" />
 			<widget name="clear" position="540,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="blue" />
 			<widget name="ok" position="270,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="green" />
 			<widget name="cancel" position="8,450" size="210,60" valign="center" halign="center" zPosition="1" font="Regular;22" transparent="1" backgroundColor="red" />
