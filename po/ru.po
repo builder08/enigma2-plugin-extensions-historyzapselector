@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-29 01:33+0200\n"
-"PO-Revision-Date: 2018-02-20 20:04+0200\n"
+"PO-Revision-Date: 2020-08-23 13:29+0300\n"
 "Last-Translator: Dimitrij <Dima-73@inbox.lv>\n"
 "Language-Team: LANGUAGE <Dima-73@inbox.lv>\n"
 "Language: ru\n"
@@ -21,26 +21,26 @@ msgstr "%02d.%02d - %02d.%02d (%s%d мин)"
 
 #, python-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #, python-format
 msgid "%s  number: %s"
 msgstr "%s  номер: %s"
 
 msgid "Auto save history before stopping E2"
-msgstr "Автосохранение истории перед остановкой E2"
+msgstr "Авто сохранение истории перед остановкой E2"
 
 msgid "Behavior of keys for use"
 msgstr "Поведение кнопок для использования"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 msgid "Clear History"
 msgstr "Очистить историю"
 
 msgid "Could not open Picture in Picture"
-msgstr ""
+msgstr "Невозможно открыть PiP!"
 
 msgid "Del entry  Clear history        Preview"
 msgstr "Удал. запись  Очистить историю    Превью"
@@ -58,7 +58,7 @@ msgid "Delete selected  Clear history  All list       Preview"
 msgstr "Удалить запись  Очистка истории  Весь лист  Превью"
 
 msgid "Disable auto saving?"
-msgstr "Отключить автосохранение?"
+msgstr "Отключить авто сохранение?"
 
 msgid "Duration type"
 msgstr "Тип показа продолжительности"
@@ -67,7 +67,7 @@ msgid "Enable Zap History"
 msgstr "Включить плагин истории каналов"
 
 msgid "Enable auto saving?"
-msgstr "Включить автосохранение?"
+msgstr "Включить авто сохранение?"
 
 msgid "Failed!"
 msgstr "Не удалось!"
@@ -75,16 +75,15 @@ msgstr "Не удалось!"
 msgid "GUI needs restart to activate hotkey!"
 msgstr "Необходим рестарт GUI для активации горячих кнопок!"
 
-#, fuzzy
 msgid "History Zap Selector"
-msgstr "История каналов: кол-во %d"
+msgstr "Расширенный селектор истории каналов"
 
 #, python-format
 msgid "History zap: count %d"
 msgstr "История каналов: кол-во %d"
 
 msgid "HistoryZapSelector"
-msgstr ""
+msgstr "HistoryZapSelector"
 
 #, python-format
 msgid "Invalid number: %s"
@@ -118,7 +117,7 @@ msgid "Restore history list"
 msgstr "Восстановить список истории"
 
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
 msgid "Save history list"
 msgstr "Сохранить список истории"
@@ -252,3 +251,18 @@ msgstr "переключить на сервис"
 
 msgid "Show parental control services"
 msgstr "Показывать сервисы родительского контроля"
+
+msgid "Auto restore history after start E2"
+msgstr "Авто восстановление истории после старта E2"
+
+msgid "Disable auto restore?"
+msgstr "Отключить авто восстановление?"
+
+msgid "Enable auto restore?"
+msgstr "Включить авто восстановление?"
+
+msgid " (on)"
+msgstr " (вкл)"
+
+msgid " (off)"
+msgstr " (выкл)"
