@@ -692,10 +692,10 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				"jumpPreviousMark":(self.prev, _("previous entry")),
 				"jumpNextMark": (self.next, _("next entry")),
 				"toggleMark": (self.okbuttonClick, _("zap to service")),
-				"showInfo": (self.epgbuttonClick, _("open single EPG")),
-				"showGuide": (self.infobuttonClick, _("open Event View")),
-				"showGuideLong": (self.epgbuttonClick, _("open single EPG")),
-				"showInfoLong": (self.infobuttonClick, _("open Event View")),
+				"showInfo": (self.epgmapbuttonClick, _("open single EPG")),
+				"showGuide": (self.infomapbuttonClick, _("open Event View")),
+				"showGuideLong": (self.epgmapbuttonClick, _("open single EPG")),
+				"showInfoLong": (self.infomapbuttonClick, _("open Event View")),
 				"menu": (self.menubuttonClick, _("open list options")),
 				"red": (self.deleteCurrentEntryClick, _("delete selected entry")),
 				"green": (self.greenbuttonClick, _("clear history list")),
@@ -1017,8 +1017,6 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		pass
 
 	def epgbuttonClick(self):
-		if self.preview_zap or self.numberZapActive or self.FullEntryActive:
-			return
 		cur = self["menu"].current
 		if cur and cur[0]:
 			serviceHandler = eServiceCenter.getInstance()
@@ -1030,9 +1028,23 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				except:
 					pass
 
-	def infobuttonClick(self):
+	def infomapbuttonClick(self):
 		if self.preview_zap or self.numberZapActive or self.FullEntryActive:
 			return
+		if config.plugins.SetupZapSelector.map_key.value:
+			self.epgbuttonClick()
+		else:
+			self.infobuttonClick()
+
+	def epgmapbuttonClick(self):
+		if self.preview_zap or self.numberZapActive or self.FullEntryActive:
+			return
+		if not config.plugins.SetupZapSelector.map_key.value:
+			self.epgbuttonClick()
+		else:
+			self.infobuttonClick()
+
+	def infobuttonClick(self):
 		epglist = [ ]
 		self.epglist = epglist
 		cur = self["menu"].current

@@ -27,7 +27,7 @@ except:
 	UseAutoCamSetup = False
 
 
-PLUGIN_VERSION = _(" ver. ") + "3.0"
+PLUGIN_VERSION = _(" ver. ") + "3.1"
 
 HistorySaveFile = "/etc/enigma2/historyzapselector.conf"
 
@@ -57,6 +57,7 @@ config.plugins.SetupZapSelector.show_button = ConfigYesNo(default = False)
 config.plugins.SetupZapSelector.warning_message = ConfigYesNo(default = True)
 config.plugins.SetupZapSelector.pip_zap = ConfigSelection(choices = {"0": _("disabled"), "1": _("show options list"), "2": _("only Pipzap"), "3": _("only standard PiP"), "4": _("enabled")}, default="0")
 config.plugins.SetupZapSelector.visible_parental_control = ConfigYesNo(default = True)
+config.plugins.SetupZapSelector.map_key = ConfigYesNo(default = False)
 
 config.misc.setupzapselector_autosave_history = ConfigYesNo(default = False)
 config.misc.setupzapselector_autorestore_history = ConfigYesNo(default = False)
@@ -176,6 +177,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 		self.cfg_show_button = getConfigListEntry(_("Show panel buttons on display"), self.ZAP.show_button)
 		self.cfg_replace_keys = getConfigListEntry(_("Behavior of keys for use"), self.ZAP.replace_keys)
 		self.cfg_visible_parental_control = getConfigListEntry(_("Show parental control services"), self.ZAP.visible_parental_control)
+		self.cfg_map_key = getConfigListEntry(_("Exchange EPG/Info buttons"), self.ZAP.map_key)
 
 	def createSetup(self):
 		list = []
@@ -195,6 +197,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 			list.append(self.cfg_replace_keys)
 			if config.ParentalControl.servicepin[0].value and config.ParentalControl.servicepinactive.value:
 				list.append(self.cfg_visible_parental_control)
+			list.append(self.cfg_map_key)
 		self["config"].list = list
 		self["config"].l.setList(list)
 
