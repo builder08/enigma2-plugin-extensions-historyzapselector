@@ -266,3 +266,6 @@ msgstr " (вкл)"
 
 msgid " (off)"
 msgstr " (выкл)"
+
+msgid "Exchange EPG/Info buttons"
+msgstr "Обменять кнопки EPG/Info"
