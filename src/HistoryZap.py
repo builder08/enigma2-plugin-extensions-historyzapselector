@@ -689,7 +689,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			{
 				"ok": (self.okbuttonClick, _("zap to service")),
 				"cancel": (self.cancelClick, _("exit")),
-				"jumpPreviousMark":(self.prev, _("previous entry")),
+				"jumpPreviousMark": (self.prev, _("previous entry")),
 				"jumpNextMark": (self.next, _("next entry")),
 				"toggleMark": (self.okbuttonClick, _("zap to service")),
 				"showInfo": (self.epgmapbuttonClick, _("open single EPG")),
@@ -1195,7 +1195,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			sname = ':'.join(service.split(':')[:11])
 			pos = sname.rfind(':')
 			if pos != -1:
-				sname = sname[:pos].rstrip(':').replace(':','_')
+				sname = sname[:pos].rstrip(':').replace(':', '_')
 				for path in self.searchPiconPaths:
 					pngname = path + sname + ".png"
 					if fileExists(pngname):
