@@ -818,7 +818,8 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		return cur and cur[0]
 
 	def keyNumberGlobal(self, number):
-		if self.preview_zap: return
+		if self.preview_zap:
+			return
 		if len(self.list) <= 1:
 			if number == 0:
 				return 0
@@ -980,7 +981,8 @@ class HistoryZapSelector(Screen, HelpableScreen):
 						hlen = len(self.InfoBarInstance.servicelist.history)
 						pos = 0
 						for x in self.InfoBarInstance.servicelist.history:
-							if x[-1] == nref: break
+							if x[-1] == nref:
+								break
 							pos += 1
 						if pos < hlen:
 							if dopipzap and type != "3" or type == "2":

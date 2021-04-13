@@ -401,11 +401,14 @@ def historyDeleteCurrentEntry(self, ref):
 
 def historyZap(self, direction):
 	hlen = len(self.servicelist.history)
-	if hlen < 1: return
+	if hlen < 1:
+		return
 	mark = self.servicelist.history_pos
 	selpos = self.servicelist.history_pos + direction
-	if selpos < 0: selpos = 0
-	if selpos > hlen-1: selpos = hlen-1
+	if selpos < 0:
+		selpos = 0
+	if selpos > hlen-1:
+		selpos = hlen-1
 	serviceHandler = eServiceCenter.getInstance()
 	historylist = [ ]
 	for x in self.servicelist.history:
@@ -460,11 +463,13 @@ def historyZap(self, direction):
 	self.session.openWithCallback(self.historyMenuClosed, HistoryZapSelector, historylist, selpos, mark, invert_items=True, redirect_buttons=True, wrap_around=True)
 
 def historyMenuClosed(self, retval, checkTimeshift=True, checkParentalControl=True, ref=None):
-	if not retval: return
+	if not retval:
+		return
 	hlen = len(self.servicelist.history)
 	pos = 0
 	for x in self.servicelist.history:
-		if x[-1] == retval: break
+		if x[-1] == retval:
+			break
 		pos += 1
 	force_zap = config.plugins.SetupZapSelector.preview.value and pos == self.servicelist.history_pos
 	if pos < hlen and (pos != self.servicelist.history_pos or force_zap):
@@ -550,9 +555,12 @@ def RestoreHistoryInFile(self):
 			while True:
 				line = cfg.readline()
 				line = line.replace('\n', '')
-				if not line: break
-				if line[0] in '#': continue
-				if refstr and refstr in line: continue
+				if not line:
+					break
+				if line[0] in '#':
+					continue
+				if refstr and refstr in line:
+					continue
 				try:
 					tmp = [eServiceReference(x) for x in line.split(';') if x != '']
 				except:
@@ -580,8 +588,10 @@ def ShowHistoryInFile():
 	while True:
 		line = cfg.readline()
 		line = line.replace('\n', '')
-		if not line: break
-		if line[0] in '#': continue
+		if not line:
+			break
+		if line[0] in '#':
+			continue
 		try:
 			tmp = [eServiceReference(x) for x in line.split(';') if x != '']
 		except:
