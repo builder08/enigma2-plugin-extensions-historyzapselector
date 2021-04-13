@@ -69,7 +69,7 @@ class HistoryZapInfoBar:
 		self.session = session
 		self.infobar = infobar
 		self.lastKey = None
-		self.hotkeys = { }
+		self.hotkeys = {}
 		for x in HistoryZapSelectorKeys:
 			self.hotkeys[x[0]] = [KEYIDS[key] for key in x[2]]
 		eActionMap.getInstance().bindAction('', -10, self.keyPressed)
@@ -155,7 +155,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 
 	def initConfig(self):
 		def getPrevValues(section):
-			res = { }
+			res = {}
 			for (key,val) in section.content.items.items():
 				if isinstance(val, ConfigSubsection):
 					res[key] = getPrevValues(val)
@@ -410,7 +410,7 @@ def historyZap(self, direction):
 	if selpos > hlen-1:
 		selpos = hlen-1
 	serviceHandler = eServiceCenter.getInstance()
-	historylist = [ ]
+	historylist = []
 	for x in self.servicelist.history:
 		if not config.plugins.SetupZapSelector.visible_parental_control.value and config.ParentalControl.servicepin[0].value and config.ParentalControl.servicepinactive.value:
 			if Components.ParentalControl.parentalControl.getProtectionLevel(x[-1].toCompareString()) != -1:

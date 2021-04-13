@@ -704,7 +704,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				}, -1
 		)
 		if self.number_zap:
-			self["Numberactions"] = NumberActionMap( ["SetupActions", "ShortcutActions"],
+			self["Numberactions"] = NumberActionMap(["SetupActions", "ShortcutActions"],
 				{
 					"cancel": self.quit,
 					"ok": self.keyOK,
@@ -1047,7 +1047,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			self.infobuttonClick()
 
 	def infobuttonClick(self):
-		epglist = [ ]
+		epglist = []
 		self.epglist = epglist
 		cur = self["menu"].current
 		if cur and cur[0]:
@@ -1167,7 +1167,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			from plugin import InfoBarChannelSelection_instance, historyDeleteCurrentEntry
 			ref = self.getCurrent()
 			if InfoBarChannelSelection_instance and historyDeleteCurrentEntry(InfoBarChannelSelection_instance, ref):
-				self.new_list = [ ]
+				self.new_list = []
 				cnt = 0
 				for x in self.list:
 					if x[0] != ref:
