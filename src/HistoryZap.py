@@ -826,7 +826,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		if len(self.list) <= 1:
 			if number == 0:
 				return 0
-			return 
+			return
 		self.numTimer.stop()
 		self.service_ref = None
 		if self.numberString is None:
@@ -1182,7 +1182,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 							self.new_list.append(new_x)
 						else:
 							self.new_list.append(x)
-						cnt += 1 
+						cnt += 1
 				if len(self.list) > len(self.new_list):
 					self["menu"].setList(self.new_list)
 					new_title = _("History zap: count %d") % len(self.new_list)

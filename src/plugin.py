@@ -131,7 +131,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 		self["ok"] = Button(_("Save"))
 		self["cancel"] = Button(_("Cancel"))
 		self["clear"] = Button(_("Options"))
-		self["actions"] = ActionMap(["SetupActions", "ColorActions"], 
+		self["actions"] = ActionMap(["SetupActions", "ColorActions"],
 		{
 			"ok": self.keyOk,
 			"save": self.keyGreen,
@@ -211,7 +211,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 
 	def keyOk(self):
 		cur = self["config"].getCurrent() and self["config"].getCurrent()[1]
-		if not cur: 
+		if not cur:
 			return
 		else:
 			pass
@@ -237,7 +237,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 			self.ZAP.duration.value = False
 			self.ZAP.picon.value = False
 		if not self.ZAP.duration.value:
-			self.ZAP.duration_type.value = "0" 
+			self.ZAP.duration_type.value = "0"
 		if self.ZAP.start.value and self.ZAP.replace_keys.value != "none":
 			text = ""
 			try:
@@ -445,7 +445,7 @@ def historyZap(self, direction):
 					if eventName is None:
 						eventName = ""
 					else:
-						eventName = eventName.replace('|', '').replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '').replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '').replace('(0+)', '').replace('0+', '')	
+						eventName = eventName.replace('|', '').replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '').replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '').replace('(0+)', '').replace('0+', '')
 					if config.plugins.SetupZapSelector.event.value == "2":
 						descriptionName = event.getShortDescription()
 						if descriptionName is None or descriptionName == "":

@@ -12,4 +12,3 @@ setup(name='enigma2-plugin-extensions-historyzapselector',
 		description='Advanced history zap selector',
 		cmdclass=setup_translate.cmdclass,
 	)
-
