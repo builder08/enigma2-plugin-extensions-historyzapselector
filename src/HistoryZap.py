@@ -1106,7 +1106,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		cur_ref = self.getCurrent()
 		if cur_ref and self.playservice and self.playservice != cur_ref:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.answerZap, MessageBox, _("Preview zap to service ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.answerZap, MessageBox, _("Preview zap to service ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.answerZap(True)
 
@@ -1142,7 +1142,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			return
 		if len(self.list) > 1:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.answerClear, MessageBox, _("Really clear history list ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.answerClear, MessageBox, _("Really clear history list ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.answerClear(True)
 
@@ -1158,7 +1158,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		cur_ref = self.getCurrent()
 		if cur_ref and self.playservice and self.playservice != cur_ref:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.deleteEntryConfirmed, MessageBox, _("Really delete current entry ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.deleteEntryConfirmed, MessageBox, _("Really delete current entry ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.deleteEntryConfirmed(True)
 

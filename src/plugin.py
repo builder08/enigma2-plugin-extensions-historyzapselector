@@ -44,23 +44,23 @@ HistoryZapSelectorKeys = [
 ]
 
 config.plugins.SetupZapSelector = ConfigSubsection()
-config.plugins.SetupZapSelector.start = ConfigYesNo(default = True)
-config.plugins.SetupZapSelector.history = ConfigInteger(20, limits = (1,60))
-config.plugins.SetupZapSelector.event = ConfigSelection(choices = {"0": _("default (only service name)"), "1": _("event name"), "2": _("event name and description")}, default="0")
-config.plugins.SetupZapSelector.duration = ConfigYesNo(default = False)
-config.plugins.SetupZapSelector.duration_type = ConfigSelection(choices = {"0": _("remaining minutes"), "1": _("progress bar")}, default="0")
-config.plugins.SetupZapSelector.picon = ConfigYesNo(default = False)
-config.plugins.SetupZapSelector.preview = NoSave(ConfigYesNo(default = False))
-config.plugins.SetupZapSelector.number_zap = ConfigYesNo(default = False)
+config.plugins.SetupZapSelector.start = ConfigYesNo(default=True)
+config.plugins.SetupZapSelector.history = ConfigInteger(20, limits=(1,60))
+config.plugins.SetupZapSelector.event = ConfigSelection(choices={"0": _("default (only service name)"), "1": _("event name"), "2": _("event name and description")}, default="0")
+config.plugins.SetupZapSelector.duration = ConfigYesNo(default=False)
+config.plugins.SetupZapSelector.duration_type = ConfigSelection(choices={"0": _("remaining minutes"), "1": _("progress bar")}, default="0")
+config.plugins.SetupZapSelector.picon = ConfigYesNo(default=False)
+config.plugins.SetupZapSelector.preview = NoSave(ConfigYesNo(default=False))
+config.plugins.SetupZapSelector.number_zap = ConfigYesNo(default=False)
 config.plugins.SetupZapSelector.replace_keys = ConfigSelection([(x[0],x[1]) for x in HistoryZapSelectorKeys], "none")
-config.plugins.SetupZapSelector.show_button = ConfigYesNo(default = False)
-config.plugins.SetupZapSelector.warning_message = ConfigYesNo(default = True)
-config.plugins.SetupZapSelector.pip_zap = ConfigSelection(choices = {"0": _("disabled"), "1": _("show options list"), "2": _("only Pipzap"), "3": _("only standard PiP"), "4": _("enabled")}, default="0")
-config.plugins.SetupZapSelector.visible_parental_control = ConfigYesNo(default = True)
-config.plugins.SetupZapSelector.map_key = ConfigYesNo(default = False)
+config.plugins.SetupZapSelector.show_button = ConfigYesNo(default=False)
+config.plugins.SetupZapSelector.warning_message = ConfigYesNo(default=True)
+config.plugins.SetupZapSelector.pip_zap = ConfigSelection(choices={"0": _("disabled"), "1": _("show options list"), "2": _("only Pipzap"), "3": _("only standard PiP"), "4": _("enabled")}, default="0")
+config.plugins.SetupZapSelector.visible_parental_control = ConfigYesNo(default=True)
+config.plugins.SetupZapSelector.map_key = ConfigYesNo(default=False)
 
-config.misc.setupzapselector_autosave_history = ConfigYesNo(default = False)
-config.misc.setupzapselector_autorestore_history = ConfigYesNo(default = False)
+config.misc.setupzapselector_autosave_history = ConfigYesNo(default=False)
+config.misc.setupzapselector_autorestore_history = ConfigYesNo(default=False)
 
 HISTORYSIZE = config.plugins.SetupZapSelector.history.value
 
@@ -246,7 +246,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 			if oldInfoBar__init__ is None:
 				text += _("GUI needs restart to activate hotkey!")
 			if text:
-				self.session.open(MessageBox, text, MessageBox.TYPE_INFO, timeout = 5)
+				self.session.open(MessageBox, text, MessageBox.TYPE_INFO, timeout=5)
 		self.ZAP.save()
 		HISTORYSIZE = self.ZAP.history.value
 		self.close()
@@ -302,13 +302,13 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 							txt = _("Disable auto saving?")
 						else:
 							txt = _("Enable auto saving?")
-						self.session.openWithCallback(self.saveAction, MessageBox, txt, type = MessageBox.TYPE_YESNO)
+						self.session.openWithCallback(self.saveAction, MessageBox, txt, type=MessageBox.TYPE_YESNO)
 					elif choice[1] == "autorestore":
 						if config.misc.setupzapselector_autorestore_history.value:
 							txt = _("Disable auto restore?")
 						else:
 							txt = _("Enable auto restore?")
-						self.session.openWithCallback(self.restoreAction, MessageBox, txt, type = MessageBox.TYPE_YESNO)
+						self.session.openWithCallback(self.restoreAction, MessageBox, txt, type=MessageBox.TYPE_YESNO)
 			self.session.openWithCallback(extraAction, ChoiceBox, title=text, list=menu)
 
 	def saveAction(self, answer):
@@ -650,5 +650,5 @@ def StartMainSession(reason, **kwargs):
 		SaveHistoryInFile(InfoBarChannelSelection_instance)
 
 def Plugins(**kwargs):
-	return [PluginDescriptor(name=_("HistoryZapSelector"), description=_("History Zap Selector"), where = [PluginDescriptor.WHERE_SESSIONSTART,PluginDescriptor.WHERE_AUTOSTART], fnc = StartMainSession),
-		PluginDescriptor(name=_("HistoryZapSelector"), description=_("Settings zap history") + PLUGIN_VERSION, where = PluginDescriptor.WHERE_PLUGINMENU, icon = "zap.png", fnc = main)]
+	return [PluginDescriptor(name=_("HistoryZapSelector"), description=_("History Zap Selector"), where=[PluginDescriptor.WHERE_SESSIONSTART,PluginDescriptor.WHERE_AUTOSTART], fnc=StartMainSession),
+		PluginDescriptor(name=_("HistoryZapSelector"), description=_("Settings zap history") + PLUGIN_VERSION, where=PluginDescriptor.WHERE_PLUGINMENU, icon="zap.png", fnc=main)]
