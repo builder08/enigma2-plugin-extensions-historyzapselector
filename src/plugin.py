@@ -167,7 +167,7 @@ class SetupZapSelectorScreen(Screen, ConfigListScreen, ProtectedScreen):
 		self.prev_values = getPrevValues(self.ZAP)
 		self.cfg_start = getConfigListEntry(_("Enable Zap History"), self.ZAP.start)
 		self.cfg_history = getConfigListEntry(_("Maximum zap history entries"), self.ZAP.history)
-		self.cfg_event  = getConfigListEntry(_("Style services list"), self.ZAP.event)
+		self.cfg_event = getConfigListEntry(_("Style services list"), self.ZAP.event)
 		self.cfg_duration = getConfigListEntry(_("Show duration events"), self.ZAP.duration)
 		self.cfg_duration_type = getConfigListEntry(_("Duration type"), self.ZAP.duration_type)
 		self.cfg_picon = getConfigListEntry(_("Use picons"), self.ZAP.picon)
@@ -375,9 +375,9 @@ def historyNext(self):
 
 def historyClear(self):
 	if self and self.servicelist:
-		for i in range(0, len(self.servicelist.history)-1):
+		for i in range(0, len(self.servicelist.history) - 1):
 			del self.servicelist.history[0]
-		self.servicelist.history_pos = len(self.servicelist.history)-1
+		self.servicelist.history_pos = len(self.servicelist.history) - 1
 		return True
 	return False
 
@@ -386,12 +386,12 @@ def historyDeleteCurrentEntry(self, ref):
 		if self and self.servicelist:
 			hlen = len(self.servicelist.history)
 			x = 0
-			while x < hlen-1:
+			while x < hlen - 1:
 				if self.servicelist.history[x][-1] == ref:
 					try:
 						del self.servicelist.history[x]
 						hlen -= 1
-						self.servicelist.history_pos = hlen-1
+						self.servicelist.history_pos = hlen - 1
 						return True
 					except:
 						pass
@@ -407,8 +407,8 @@ def historyZap(self, direction):
 	selpos = self.servicelist.history_pos + direction
 	if selpos < 0:
 		selpos = 0
-	if selpos > hlen-1:
-		selpos = hlen-1
+	if selpos > hlen - 1:
+		selpos = hlen - 1
 	serviceHandler = eServiceCenter.getInstance()
 	historylist = []
 	for x in self.servicelist.history:
@@ -486,7 +486,7 @@ def historyMenuClosed(self, retval, checkTimeshift=True, checkParentalControl=Tr
 				tmp = self.servicelist.history[pos]
 				self.servicelist.history.append(tmp)
 				del self.servicelist.history[pos]
-				self.servicelist.history_pos = hlen-1
+				self.servicelist.history_pos = hlen - 1
 				oldref = self.session.nav.getCurrentlyPlayingServiceReference()
 				self.session.nav.playService(retval, checkParentalControl=False, adjust=False)
 				if UseAutoCamSetup:
@@ -506,12 +506,12 @@ def historyCheckTimeshiftCallback(self, retval, answer):
 
 def addToHistory(self, ref):
 	if self.servicePath is not None:
-		tmp=self.servicePath[:]
+		tmp = self.servicePath[:]
 		tmp.append(ref)
 		self.history.append(tmp)
 		hlen = len(self.history)
 		x = 0
-		while x < hlen-1:
+		while x < hlen - 1:
 			if self.history[x][-1] == ref:
 				del self.history[x]
 				hlen -= 1
@@ -520,7 +520,7 @@ def addToHistory(self, ref):
 		if hlen > HISTORYSIZE:
 			del self.history[0]
 			hlen -= 1
-		self.history_pos = hlen-1
+		self.history_pos = hlen - 1
 
 def SaveHistoryInFile(self):
 	if self and self.servicelist:
@@ -539,7 +539,7 @@ def RestoreHistoryInFile(self):
 				cfg = open(HistorySaveFile, 'r')
 			except:
 				return False
-			for i in range(0, len(self.servicelist.history)-1):
+			for i in range(0, len(self.servicelist.history) - 1):
 				del self.servicelist.history[0]
 			self.servicelist.history_pos = 0
 			old_history = self.servicelist.history[0]
