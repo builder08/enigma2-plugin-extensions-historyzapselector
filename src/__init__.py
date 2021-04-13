@@ -11,6 +11,7 @@ gettext.bindtextdomain("enigma2", resolveFilename(SCOPE_LANGUAGE))
 gettext.textdomain("enigma2")
 gettext.bindtextdomain("HistoryZapSelector", "%s%s" % (resolveFilename(SCOPE_PLUGINS), "Extensions/HistoryZapSelector/locale/"))
 
+
 def _(txt):
 	t = gettext.dgettext("HistoryZapSelector", txt)
 	if t == txt:

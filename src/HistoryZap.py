@@ -28,6 +28,7 @@ FULLHD = False
 if getDesktop(0).size().width() >= 1920:
 	FULLHD = True
 
+
 class PreviewZap(Screen):
 	if FULLHD:
 		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,75" size="135,38" title="Preview" zPosition="-1">
@@ -37,6 +38,7 @@ class PreviewZap(Screen):
 		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,50" size="90,25" title="Preview" zPosition="-1">
 				<eLabel text="Preview" position="0,0" size="90,25" foregroundColor="#00ff66" font="Regular;22" />
 			</screen>"""
+
 
 class FullEntryNumber(Screen):
 	if FULLHD:
@@ -77,6 +79,7 @@ class FullEntryNumber(Screen):
 
 	def setTitleNumber(self, text=''):
 		self.setTitle(text)
+
 
 class HistoryZapSelector(Screen, HelpableScreen):
 	searchPiconPaths = ['/usr/share/enigma2/picon/', '/media/hdd/picon/', '/media/usb/picon/']
@@ -930,6 +933,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 							menu = [(_("Main screen"), "main"), (_("Standard PiP"), "standard"), (_("Pipzap"), "pipzap")]
 						else:
 							menu = [(_("Standard PiP"), "standard"), (_("Pipzap"), "pipzap")]
+
 						def extraAction(choice):
 							if choice:
 								if choice[1] == "main":
@@ -1008,7 +1012,6 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				self.close(None)
 		else:
 			self.close(None)
-
 
 	try:
 		def zapToClick(self, ref=None, preview=False, zapback=False):
