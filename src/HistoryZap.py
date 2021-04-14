@@ -28,6 +28,7 @@ FULLHD = False
 if getDesktop(0).size().width() >= 1920:
 	FULLHD = True
 
+
 class PreviewZap(Screen):
 	if FULLHD:
 		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,75" size="135,38" title="Preview" zPosition="-1">
@@ -37,6 +38,7 @@ class PreviewZap(Screen):
 		skin = """<screen name="PreviewZap" flags="wfNoBorder" position="center,50" size="90,25" title="Preview" zPosition="-1">
 				<eLabel text="Preview" position="0,0" size="90,25" foregroundColor="#00ff66" font="Regular;22" />
 			</screen>"""
+
 
 class FullEntryNumber(Screen):
 	if FULLHD:
@@ -77,6 +79,7 @@ class FullEntryNumber(Screen):
 
 	def setTitleNumber(self, text=''):
 		self.setTitle(text)
+
 
 class HistoryZapSelector(Screen, HelpableScreen):
 	searchPiconPaths = ['/usr/share/enigma2/picon/', '/media/hdd/picon/', '/media/usb/picon/']
@@ -689,7 +692,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			{
 				"ok": (self.okbuttonClick, _("zap to service")),
 				"cancel": (self.cancelClick, _("exit")),
-				"jumpPreviousMark":(self.prev, _("previous entry")),
+				"jumpPreviousMark": (self.prev, _("previous entry")),
 				"jumpNextMark": (self.next, _("next entry")),
 				"toggleMark": (self.okbuttonClick, _("zap to service")),
 				"showInfo": (self.epgmapbuttonClick, _("open single EPG")),
@@ -704,7 +707,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				}, -1
 		)
 		if self.number_zap:
-			self["Numberactions"] = NumberActionMap( ["SetupActions", "ShortcutActions"],
+			self["Numberactions"] = NumberActionMap(["SetupActions", "ShortcutActions"],
 				{
 					"cancel": self.quit,
 					"ok": self.keyOK,
@@ -818,11 +821,12 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		return cur and cur[0]
 
 	def keyNumberGlobal(self, number):
-		if self.preview_zap: return
+		if self.preview_zap:
+			return
 		if len(self.list) <= 1:
 			if number == 0:
 				return 0
-			return 
+			return
 		self.numTimer.stop()
 		self.service_ref = None
 		if self.numberString is None:
@@ -929,6 +933,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 							menu = [(_("Main screen"), "main"), (_("Standard PiP"), "standard"), (_("Pipzap"), "pipzap")]
 						else:
 							menu = [(_("Standard PiP"), "standard"), (_("Pipzap"), "pipzap")]
+
 						def extraAction(choice):
 							if choice:
 								if choice[1] == "main":
@@ -980,7 +985,8 @@ class HistoryZapSelector(Screen, HelpableScreen):
 						hlen = len(self.InfoBarInstance.servicelist.history)
 						pos = 0
 						for x in self.InfoBarInstance.servicelist.history:
-							if x[-1] == nref: break
+							if x[-1] == nref:
+								break
 							pos += 1
 						if pos < hlen:
 							if dopipzap and type != "3" or type == "2":
@@ -1006,7 +1012,6 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				self.close(None)
 		else:
 			self.close(None)
-
 
 	try:
 		def zapToClick(self, ref=None, preview=False, zapback=False):
@@ -1045,7 +1050,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			self.infobuttonClick()
 
 	def infobuttonClick(self):
-		epglist = [ ]
+		epglist = []
 		self.epglist = epglist
 		cur = self["menu"].current
 		if cur and cur[0]:
@@ -1104,7 +1109,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		cur_ref = self.getCurrent()
 		if cur_ref and self.playservice and self.playservice != cur_ref:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.answerZap, MessageBox, _("Preview zap to service ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.answerZap, MessageBox, _("Preview zap to service ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.answerZap(True)
 
@@ -1140,7 +1145,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			return
 		if len(self.list) > 1:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.answerClear, MessageBox, _("Really clear history list ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.answerClear, MessageBox, _("Really clear history list ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.answerClear(True)
 
@@ -1156,7 +1161,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 		cur_ref = self.getCurrent()
 		if cur_ref and self.playservice and self.playservice != cur_ref:
 			if config.plugins.SetupZapSelector.warning_message.value:
-				self.session.openWithCallback(self.deleteEntryConfirmed, MessageBox, _("Really delete current entry ?"), type = MessageBox.TYPE_YESNO)
+				self.session.openWithCallback(self.deleteEntryConfirmed, MessageBox, _("Really delete current entry ?"), type=MessageBox.TYPE_YESNO)
 			else:
 				self.deleteEntryConfirmed(True)
 
@@ -1165,7 +1170,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			from plugin import InfoBarChannelSelection_instance, historyDeleteCurrentEntry
 			ref = self.getCurrent()
 			if InfoBarChannelSelection_instance and historyDeleteCurrentEntry(InfoBarChannelSelection_instance, ref):
-				self.new_list = [ ]
+				self.new_list = []
 				cnt = 0
 				for x in self.list:
 					if x[0] != ref:
@@ -1177,7 +1182,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 							self.new_list.append(new_x)
 						else:
 							self.new_list.append(x)
-						cnt += 1 
+						cnt += 1
 				if len(self.list) > len(self.new_list):
 					self["menu"].setList(self.new_list)
 					new_title = _("History zap: count %d") % len(self.new_list)
@@ -1193,7 +1198,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 			sname = ':'.join(service.split(':')[:11])
 			pos = sname.rfind(':')
 			if pos != -1:
-				sname = sname[:pos].rstrip(':').replace(':','_')
+				sname = sname[:pos].rstrip(':').replace(':', '_')
 				for path in self.searchPiconPaths:
 					pngname = path + sname + ".png"
 					if fileExists(pngname):
