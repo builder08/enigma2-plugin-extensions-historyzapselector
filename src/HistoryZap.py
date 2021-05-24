@@ -12,7 +12,9 @@ from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.config import config
 from Tools.Directories import fileExists
+from Tools.Alternatives import GetWithAlternative
 from Screens.PictureInPicture import PictureInPicture
+from Screens.ServiceInfo import ServiceInfo
 import Screens.InfoBar
 from Tools.BoundFunction import boundFunction
 import Components.ParentalControl
@@ -704,6 +706,7 @@ class HistoryZapSelector(Screen, HelpableScreen):
 				"green": (self.greenbuttonClick, _("clear history list")),
 				"yellow": (self.yellowbuttonClick, _("show all list")),
 				"blue": (self.bluebuttonClick, _("preview for selected entry")),
+				"showServiceInfo": (self.audiobuttonClick, _("Show transponder info")),
 				}, -1
 		)
 		if self.number_zap:
@@ -1032,6 +1035,21 @@ class HistoryZapSelector(Screen, HelpableScreen):
 					self.session.open(EPGSelection, cur[0], zapFunc=self.zapToClick)
 				except:
 					pass
+
+	def audiobuttonClick(self):
+		cur = self["menu"].current
+		try:
+			if cur and cur[0] and cur[0].valid():
+				current = cur[0]
+				if current.flags & eServiceReference.isGroup:
+					playingref = self.session.nav.getCurrentlyPlayingServiceOrGroup()
+					if playingref and playingref == current:
+						current = self.session.nav.getCurrentlyPlayingServiceReference()
+					else:
+						current = eServiceReference(GetWithAlternative(current.toString()))
+				self.session.open(ServiceInfo, current)
+		except:
+			pass
 
 	def infomapbuttonClick(self):
 		if self.preview_zap or self.numberZapActive or self.FullEntryActive:

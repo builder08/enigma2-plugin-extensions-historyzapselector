@@ -269,3 +269,6 @@ msgstr " (выкл)"
 
 msgid "Exchange EPG/Info buttons"
 msgstr "Обменять кнопки EPG/Info"
+
+msgid "Show transponder info"
+msgstr "Показать инфо транспондера"

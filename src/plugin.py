@@ -27,7 +27,7 @@ except:
 	UseAutoCamSetup = False
 
 
-PLUGIN_VERSION = _(" ver. ") + "3.1"
+PLUGIN_VERSION = _(" ver. ") + "3.2"
 
 HistorySaveFile = "/etc/enigma2/historyzapselector.conf"
 

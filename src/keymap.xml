@@ -22,5 +22,6 @@
 		<key id="KEY_PREVIOUSSONG" mapto="jumpPreviousMark" flags="m"/>
 		<key id="KEY_TAB" mapto="toggleMark" flags="m"/>
 		<key id="KEY_NEXTSONG" mapto="jumpNextMark" flags="m"/>
+		<key id="KEY_AUDIO" mapto="showServiceInfo" flags="m"/>
 	</map>
 </keymap>

@@ -254,3 +254,7 @@ msgstr ""
 
 msgid "Show parental control services"
 msgstr ""
+
+msgid "Show transponder info"
+msgstr ""
+
