@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: HistoryZapSelector\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-29 10:42+0200\n"
+"PO-Revision-Date: 2021-09-21 13:18+0300\n"
+"Language: uk_UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Last-Translator: \n"
+"Language-Team: kvinto@rambler.ru\n"
+"X-Generator: Poedit 3.0\n"
+
+msgid " ver. "
+msgstr " вер. "
+
+#, python-format
+msgid "%02d.%02d - %02d.%02d (%s%d min)"
+msgstr "%02d.%02d - %02d.%02d (%s%d хв)"
+
+#, python-format
+msgid "%s"
+msgstr "%s"
+
+#, python-format
+msgid "%s  number: %s"
+msgstr "%s  номер: %s"
+
+msgid "Auto save history before stopping E2"
+msgstr "Автоматичне збереження журналу перед зупинкою E2"
+
+msgid "Behavior of keys for use"
+msgstr "Поведінка клавіш при використанні"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Clear History"
+msgstr "Видалити Історію"
+
+msgid "Could not open Picture in Picture"
+msgstr "Неможливо відкрити Картинку в Картинці"
+
+msgid "Del entry  Clear history        Preview"
+msgstr "Видалити запис  Очистити історію        Попередній перегляд"
+
+msgid "Del entry  Clear history  List  Preview"
+msgstr "Видалити запис  Очистити історію  Список  Попередній перегляд"
+
+msgid "Delete history list"
+msgstr "Видалити файл історії"
+
+msgid "Delete selected  Clear history                 Preview"
+msgstr "Видалити вибране  Очистити історію                 Попередній перегляд"
+
+msgid "Delete selected  Clear history  All list       Preview"
+msgstr "Видалити вибране  Очистити історію  Весь список       Попередній перегляд"
+
+msgid "Disable auto saving?"
+msgstr "Вимкнути автозбереження?"
+
+msgid "Duration type"
+msgstr "Вигляд тривалості передачі"
+
+msgid "Enable Zap History"
+msgstr "Ввімкнути історію перемикань"
+
+msgid "Enable auto saving?"
+msgstr "Увімкнути автозбереження?"
+
+msgid "Exchange EPG/Info buttons"
+msgstr "Заміна кнопок EPG/Info"
+
+msgid "Failed!"
+msgstr "Помилка!"
+
+msgid "GUI needs restart to activate hotkey!"
+msgstr "GUI потребує перезавантаження для активації гарячих клавіш!"
+
+msgid "History Zap Selector"
+msgstr "Список історії переключення"
+
+#, python-format
+msgid "History zap: count %d"
+msgstr "Історія переключень: %d"
+
+msgid "HistoryZapSelector"
+msgstr "HistoryZapSelector"
+
+#, python-format
+msgid "Invalid number: %s"
+msgstr "Невірний номер: %s"
+
+msgid "Main screen"
+msgstr "Головний екран"
+
+msgid "Maximum zap history entries"
+msgstr "Кількість каналів в історії переключень"
+
+msgid "Options"
+msgstr "Параметри"
+
+msgid "Options for history"
+msgstr "Параметри для історії"
+
+msgid "Pipzap"
+msgstr "Переключення Pip"
+
+msgid "Preview zap to service ?"
+msgstr "Переключити на попередній канал?"
+
+msgid "Really clear history list ?"
+msgstr "Дійсно очистити список історії?"
+
+msgid "Really delete current entry ?"
+msgstr "Дійсно видалити даний канал?"
+
+msgid "Restore history list"
+msgstr "Відновити список історії"
+
+msgid "Save"
+msgstr "Зберегти"
+
+msgid "Save history list"
+msgstr "Зберегти список історії"
+
+msgid "Settings zap history"
+msgstr "Налаштування історії переключень"
+
+msgid "Setup Zap History:"
+msgstr "Налаштування історії переключень:"
+
+msgid "Show duration events"
+msgstr "Показувати тривалість передачі"
+
+msgid "Show history list"
+msgstr "Показати список історії"
+
+msgid "Show panel buttons on display"
+msgstr "Показати панель кнопок на дисплеї"
+
+msgid "Show warning message before action"
+msgstr "Показувати попереджувальне повідомлення перед зміною"
+
+msgid "Standard PiP"
+msgstr "Стандартний PiP"
+
+msgid "Style services list"
+msgstr "Стиль списку каналів"
+
+msgid "Successed!"
+msgstr "Успішно!"
+
+msgid "Use number zap"
+msgstr "Використати номер для переключення"
+
+msgid "Use picons"
+msgstr "Показати пікони"
+
+msgid "Use the number keys for zap to service"
+msgstr "Використовувати цифрові кнопки для переключення"
+
+msgid ""
+"Warning!\n"
+"VCS plugin hotkey need disabled!\n"
+msgstr ""
+"Увага!\n"
+"Потрібно вимкнути гарячу клавішу плагіна VCS!\n"
+
+msgid "Zap as:"
+msgstr "Переключити на:"
+
+msgid "Zap focus PiP (if only enabled)"
+msgstr "Перемикати в режимі PiP (якщо тільки ввімкнено)"
+
+msgid "clear history list"
+msgstr "очистити список історії"
+
+msgid "config: "
+msgstr "налаштування: "
+
+msgid "default (only service name)"
+msgstr "по умовчуванню (тільки назва каналу)"
+
+msgid "delete selected entry"
+msgstr "видалити вибрану передачу"
+
+msgid "disabled"
+msgstr "вимкнуто"
+
+msgid "enabled"
+msgstr "ввімкнено"
+
+msgid "event name"
+msgstr "назва передачі"
+
+msgid "event name and description"
+msgstr "назва та опис передачі"
+
+msgid "exit"
+msgstr "вихід"
+
+msgid "next entry"
+msgstr "наступна передача"
+
+msgid "only CH+/-,B+/-,P+/-"
+msgstr "кнопками CH+/-,B+/-,P+/-"
+
+msgid "only LEFT/RIGHT"
+msgstr "кнопками LEFT/RIGHT"
+
+msgid "only Pipzap"
+msgstr "тільки Pip переключення"
+
+msgid "only TEXT/HELP"
+msgstr "кнопками TEXT/HELP"
+
+msgid "only standard PiP"
+msgstr "тільки стандартний PiP"
+
+msgid "open Event View"
+msgstr "перегляд передачі"
+
+msgid "open list options"
+msgstr "відкрити параметри списку"
+
+msgid "open single EPG"
+msgstr "відкритий одиночний EPG"
+
+msgid "preview for selected entry"
+msgstr "попередній перегляд вибраного каналу"
+
+msgid "previous entry"
+msgstr "попередній канал"
+
+msgid "progress bar"
+msgstr "прогрес бар"
+
+msgid "remaining minutes"
+msgstr "хвилини, що залишилися"
+
+msgid "show all list"
+msgstr "показати весь список"
+
+msgid "show options list"
+msgstr "показати список параметрів"
+
+msgid "standard <  >"
+msgstr "стандартно <  >"
+
+msgid "zap to service"
+msgstr "переключити на канал"
+
+msgid "Show parental control services"
+msgstr "Показати канали батьківського контролю"
+
+msgid "Show transponder info"
+msgstr "Показати інформацію транспондера"
